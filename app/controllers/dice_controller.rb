@@ -1,5 +1,17 @@
 class DiceController < ApplicationController
 
+  def infinity_and_beyond
+    @number = params.fetch('number').to_i
+    @sides = params.fetch('sides').to_i
+    @array_of_rolls = Array.new
+
+    @number.times do
+      @array_of_rolls.push(rand(1..@sides))
+    end
+
+    render({:template => "dice_templates/infinity.html.erb"})
+  end
+
   def one_six
     @array_of_rolls = Array.new
 
